@@ -1,7 +1,10 @@
 import path from 'path';
 import express from 'express';
 import {MongoClient} from 'mongodb';
+const dotenv = require('dotenv');
+dotenv.config();
 import template from './../template';
+
 //comment out before building for production
 import devBundle from './devBundle';
 import morgan from 'morgan';
@@ -18,7 +21,7 @@ app.get('/', (req, res) => {
   res.status(200).send(template());
 });
 
-let port = process.env.PORT || 9020;
+let port = process.env.PORT || 9018;
 app.listen(port, function onStart(err) {
   if (err) {
     console.log(err);
