@@ -7,6 +7,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 const dotenv = require('dotenv');
 dotenv.config();
+import morgan from 'morgan';
 import Template from './../template';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
@@ -31,6 +32,7 @@ const app = express();
 devBundle.compile(app);
 
 // parse body params and attache them to req.body
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
